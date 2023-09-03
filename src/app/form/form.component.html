@@ -1,0 +1,73 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div *ngIf="cumulativeError" class="error-summary">
+    {{ cumulativeError }}
+  </div>
+
+  <div>
+    <label>First Name:</label>
+    <input type="text" formControlName="firstName" />
+    <div
+      *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched"
+    >
+      First Name is required.
+    </div>
+  </div>
+
+  <div>
+    <label>Last Name:</label>
+    <input
+      type="text"
+      formControlName="lastName"
+      (focus)="clearCumulativeError()"
+    />
+    <div *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched">
+      Last Name is required.
+    </div>
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input
+      type="email"
+      formControlName="email"
+      (focus)="clearCumulativeError()"
+    />
+    <p *ngIf="submitAttempted && form.get('email')?.invalid" class="validations">
+      Please provide a valid email.
+    </p>
+  </div>
+
+  <div>
+    <label>Subscription:</label>
+    <select formControlName="subscription">
+      <option value="Basic">Basic</option>
+      <option value="Advanced">Advanced</option>
+      <option value="Pro">Pro</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Password:</label>
+    <input
+      type="password"
+      formControlName="password"
+      (focus)="clearCumulativeError()"
+    />
+    <p *ngIf="submitAttempted && form.get('password')?.invalid" class="validations">
+      Password should be at least 8 characters long and contain at least one
+      character and one special character.
+    </p>
+  </div>
+
+  <div>
+    <label>Upload CSV:</label>
+    <input type="file" (change)="onFileChange($event)" />
+  </div>
+
+  <div *ngIf="showWarning" class="warning">
+    Your form contains errors. Please correct them before submitting.
+  </div>
+
+  <button type="submit" class="submit-button">Submit</button>
+  <button [disabled]="form.pristine" (click)="clearForm()">Clear</button>
+</form>

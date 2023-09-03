@@ -1,0 +1,80 @@
+/* Global styles */
+div,
+table {
+  width: 80%;
+  margin: 2rem auto;
+  font-family: "Arial", sans-serif;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #333;
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+
+  li {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.5rem;
+
+    &:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+/* Table styling */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  thead,
+  tbody {
+    th,
+    td {
+      // Use border-box to include padding in element's total width
+      box-sizing: border-box;
+      padding: 0.7rem 0.5rem;
+      text-align: left; // ensure all text is left-aligned
+    }
+  }
+
+  thead {
+    background-color: #007bff;
+    color: #fff;
+
+    th {
+      font-weight: normal; // remove bold font-weight or set it to both th and td if you prefer
+      text-transform: capitalize;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #d6d6d6;
+
+      &:hover {
+        background-color: #e6f7ff;
+      }
+
+      td {
+        font-size: 0.95rem;
+        color: #555;
+      }
+    }
+  }
+}
+
+#csv-validation {
+  text-align: center;
+}
+
+
